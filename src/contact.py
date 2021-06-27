@@ -15,7 +15,7 @@ class Contact:
 	__addresses = None
 
 
-	def __init__(self, id, name , last_name, birth_date=None, telephones=None, addresses=None):
+	def __init__(self, id, name , last_name, birth_date=None, telephones=[], addresses=[]):
 		"""
 		Args:
 			id(int)
@@ -76,7 +76,7 @@ class Contact:
 	@property
 	def birth_date(self):
 		"""Contact birth date."""
-		return self.__birth_date
+		return utilsattr.parse_datetime_to_str(self.__birth_date)
 	@birth_date.setter
 	def birth_date(self, birth_date):
 		utilsattr.validate_datetime_attribute(birth_date)
@@ -99,23 +99,3 @@ class Contact:
 	@addresses.setter
 	def addresses(self, addresses):
 		self.__addresses = addresses
-
-
-def main():
-	contact = Contact(
-		id=33, name='Francisco', last_name='Méndez', birth_date='17-06-1985'
-		,telephones=[
-			Telephone(id=1, telephone_number='(+52)5580332028', description='Personal')
-			, Telephone(id=2, telephone_number='556-78-90', description='Oficina')
-			, Telephone(id=3, telephone_number='455555555')
-		]
-		,addresses=[
-			Address(id=1, street='Colinas de Ensenada', floor='1', city='Ixtapaluca')
-			, Address(id=1, street='Colima 383', floor='1', city='México', zip_code='06700')
-		]
-	)
-	print(f'contact:{contact}')
-
-
-if __name__ == '__main__':
-	main()
