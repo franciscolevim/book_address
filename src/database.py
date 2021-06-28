@@ -7,7 +7,7 @@ import sqlite3
 class DataBase:
 
 
-	__PATH = '../db/BookAddress'
+	__PATH = '../db/BookAddress.db'
 
 
 	def __init__(self):
@@ -52,7 +52,7 @@ class DataBase:
 			telephones = []
 			for record in cursor_phone:
 				telephones.append(Telephone(id=record[0], telephone_number=record[1], description=record[2]))
-				return telephones
+			return telephones
 		except:
 			print('Error: Couldn\'t read the telephones.')
 			return []
@@ -73,7 +73,7 @@ class DataBase:
 			addresses = []
 			for record in cursor_address:
 				addresses.append(Address(id=record[0], street=record[1], floor=record[2], city=record[3], zip_code=record[4]))
-				return addresses
+			return addresses
 		except:
 			print('Error: Couldn\'t read the addresses.')
 			return []
@@ -138,7 +138,7 @@ class DataBase:
 			return []
 
 
-	def insert_contact(self, contact):
+	def save_contact(self, contact):
 		"""Insert a contact on the database.
 
 		Args:
@@ -185,4 +185,4 @@ class DataBase:
 			return True
 		except:
 			print(f'Error: Couldn\'t delete the contact.')
-			False
+			False	

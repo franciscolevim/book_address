@@ -1,6 +1,9 @@
-import utils.attributes_values as utilsattr
 from address import Address
 from telephone import Telephone
+
+import utils.attributes_values as utilsattr
+
+import json
 
 
 class Contact:
@@ -34,12 +37,7 @@ class Contact:
 
 
 	def __str__(self):
-		return f'{"{"}id:{self.id}, ' \
-			+ f'name:{self.name}, ' \
-			+ f'last_name:{self.last_name}, ' \
-			+ f'birth_date:{utilsattr.parse_datetime_to_str(self.birth_date)}, ' \
-			+ f'telephones:[{utilsattr.parse_attribute_to_string(self.telephones)}], ' \
-			+ f'addresses:[{utilsattr.parse_attribute_to_string(self.addresses)}]{"}"}'
+		return self.to_json()
 
 
 	@property
@@ -99,3 +97,38 @@ class Contact:
 	@addresses.setter
 	def addresses(self, addresses):
 		self.__addresses = addresses
+
+
+	def to_map(self):
+		"""Transform the data object in a map object."""
+		return {
+			'id':self.id
+			,'name':self.name
+			,'last_name':self.last_name
+			,'birth_date':utilsattr.parse_datetime_to_str(self.birth_date)
+			,'telephones':[telephone.to_map() for telephone in self.telephones]
+			,'addresses':[address.to_map() for address in self.addresses]
+		}
+
+
+	def to_json(self):
+		"""Transform the data object in a json object."""
+		return json.dumps(self.to_map(), ensure_ascii=False)
+
+
+	@staticmethod
+	def load_from_map(map_data):
+		"""Transform a map object in a Contact object."""
+		return Contact(
+			id=map_data['id']
+			, name=map_data['name']
+			, last_name=map_data['last_name']
+			, birth_date=map_data['birth_date']
+			, telephones=[Telephone.load_from_map(telephone) for telephone in map_data['telephones']]
+			, addresses=[Address.load_from_map(address) for address in map_data['addresses']], )
+	
+
+	@staticmethod
+	def load_from_json(json_data):
+		"""Transform a json object in a Contact object."""
+		return Contact.load_from_map(json.loads(json_data))		

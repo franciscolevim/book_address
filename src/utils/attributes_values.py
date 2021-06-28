@@ -4,28 +4,6 @@ import datetime
 DATE_FORMAT = '%d-%m-%Y'
 
 
-def parse_attribute_to_string(value):
-	"""Convert the value in string, if the values is None or empty the string is the word null.
-
-	Args:
-		value - Value of the attribute.
-
-	Returns: 
-		str - Value in string format or null string if the value is None or empty.
-	"""
-	if isinstance(value, list) or isinstance(value, tuple) or isinstance(value, set):
-		if value is None or len(value) == 0:
-			return 'null'
-		else:
-			return ','.join([f'{v}' for v in value])
-	elif isinstance(value, dict):
-		return 'null' if value is None or len(value) == 0 else ','.join(value)
-	elif isinstance(value, str):
-		return 'null' if value is None or value == '' else f'{value}'
-	else:
-		return 'null' if value is None else f'{value}'
-
-
 def validate_mandatory_attribute(value):
 	"""Validate if a value is mandatory.
 

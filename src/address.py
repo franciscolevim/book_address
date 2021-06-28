@@ -1,5 +1,7 @@
 import utils.attributes_values as utilsattr
 
+import json
+
 
 class Address:
 	"""Saves the data of a address record."""
@@ -29,11 +31,7 @@ class Address:
 
 
 	def __str__(self):
-		return f'{"{"}id:{self.id}, ' \
-			+ f'street:{self.street}, ' \
-			+ f'floor:{self.floor}, ' \
-			+ f'city:{self.city}, ' \
-			+ f'zip_code:{utilsattr.parse_attribute_to_string(self.zip_code)}{"}"}'
+		return self.to_json()
 			
 
 	@property
@@ -84,3 +82,36 @@ class Address:
 	@zip_code.setter
 	def zip_code(self, zip_code):
 		self.__zip_code = zip_code
+
+
+	def to_map(self):
+		"""Transform the data object in a map object."""
+		return {
+			'id':self.id
+			,'street':self.street
+			,'floor':self.floor
+			,'city':self.city
+			,'zip_code':self.zip_code
+		}
+		
+
+	def to_json(self):
+		"""Transform the data object in a json object."""
+		return json.dumps(self.to_map(), ensure_ascii=False)
+
+
+	@staticmethod
+	def load_from_map(map_data):
+		"""Transform a map object in a Address object."""
+		return Address(
+			id=map_data['id']
+			, street=map_data['street']
+			, floor=map_data['floor']
+			, city=map_data['city']
+			, zip_code=map_data['zip_code'])
+	
+
+	@staticmethod
+	def load_from_json(json_data):
+		"""Transform a json object in a Address object."""
+		return Address.load_from_map(json.loads(json_data))
