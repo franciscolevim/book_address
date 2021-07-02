@@ -27,7 +27,7 @@ class Telephone:
 
 
 	def __str__(self):
-		return self.to_json()
+		return utilsattr.to_json(self)
 
 
 	@property
@@ -88,11 +88,6 @@ class Telephone:
 			,'telephone_number':self.telephone_number
 			,'description':self.description
 		}
-
-
-	def to_json(self):
-		"""Transform the data object in a json object."""
-		return json.dumps(self.to_map(), ensure_ascii=False)
 
 
 	@staticmethod

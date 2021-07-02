@@ -37,7 +37,7 @@ class Contact:
 
 
 	def __str__(self):
-		return self.to_json()
+		return utilsattr.to_json(self)
 
 
 	@property
@@ -109,11 +109,6 @@ class Contact:
 			,'telephones':[telephone.to_map() for telephone in self.telephones]
 			,'addresses':[address.to_map() for address in self.addresses]
 		}
-
-
-	def to_json(self):
-		"""Transform the data object in a json object."""
-		return json.dumps(self.to_map(), ensure_ascii=False)
 
 
 	@staticmethod

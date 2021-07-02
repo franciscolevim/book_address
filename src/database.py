@@ -91,7 +91,7 @@ class DataBase:
 		try:
 			database = sqlite3.connect(self.__PATH)
 			cursor = database.cursor()
-			cursor.execute(f'SELECT * FROM contact WHERE name= {name}')
+			cursor.execute(f'SELECT * FROM contact WHERE name = \'{name}\'')
 			contacts = []
 			for record in cursor:
 				contact = Contact(id=record[0], name=record[1], last_name=record[2], birth_date=record[3])
@@ -100,7 +100,7 @@ class DataBase:
 				contacts.append(contact)
 			database.close()
 			return contacts
-		except:
+		except Exception as e:
 			print('Error: Couldn\'t read the contacts with name.')
 			return []
 
@@ -117,7 +117,7 @@ class DataBase:
 		try:
 			database = sqlite3.connect(self.__PATH)
 			cursor = database.cursor()
-			cursor.execute(f'SELECT DISTINCT * FROM telephone WHERE number = {telephone_number}')
+			cursor.execute(f'SELECT DISTINCT * FROM telephone WHERE number = \'{telephone_number}\'')
 			contacts = []
 			for record in cursor:
 				cursor_contact = database.cursor()

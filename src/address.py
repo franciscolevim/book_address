@@ -31,7 +31,7 @@ class Address:
 
 
 	def __str__(self):
-		return self.to_json()
+		return utilsattr.to_json(self)
 			
 
 	@property
@@ -93,11 +93,6 @@ class Address:
 			,'city':self.city
 			,'zip_code':self.zip_code
 		}
-		
-
-	def to_json(self):
-		"""Transform the data object in a json object."""
-		return json.dumps(self.to_map(), ensure_ascii=False)
 
 
 	@staticmethod

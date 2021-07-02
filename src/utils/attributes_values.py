@@ -85,3 +85,8 @@ def parse_datetime_to_str(value):
 	return value.strftime(DATE_FORMAT) if value and isinstance(value, datetime.datetime) else value
 
 
+def to_json(object):
+	"""Transform the data object in a json object."""
+	return json.dumps(object.to_map(), ensure_ascii=False)
+
+
