@@ -7,7 +7,7 @@ import sqlite3
 class DataBase:
 
 
-	__PATH = '../db/BookAddress.db'
+	__PATH = '../../db/BookAddress.db'
 
 
 	def __init__(self):

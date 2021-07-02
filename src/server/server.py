@@ -96,7 +96,7 @@ def delete_contact(json_request):
 
 def main():
 	#json_request = json.loads('{"command": "1", "parameters": {"name":"Dorotea", "telephone":""}}')
-	#json_request = json.loads('{"name":"", "telephone":"5568790013"}')
+	json_request = json.loads('{"command": "1", "parameters": {"name":"", "telephone":"5568790013"}}')
 	#result = find_contact(json_request)
 	#json_request = json.loads(' {"command": "2", "contact": '\
 	#	+ '{"id": 0, "name": "Dorotea", "last_name": "Martinez", "birth_date": "22-08-1930", '\
@@ -106,8 +106,8 @@ def main():
 	#json_request = json.loads('{"command": "3", "parameters": {"name":"", "telephone":"5512546702"}}')
 	#json_request = json.loads('{"command": "3", "parameters": {"name":"Dorotea", "telephone":""}}')
 	#result = create_contact(json_request['contact'])
-	#result = find_contact(json_request['parameters'])
-	result = delete_contact(json_request['parameters'])
+	result = find_contact(json_request['parameters'])
+	#result = delete_contact(json_request['parameters'])
 	print(f'Result = {result}')
 
 
