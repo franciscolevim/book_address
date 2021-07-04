@@ -39,7 +39,7 @@ def process_request(request):
 		request (str) - JSON client request.
 
 	Returns: 
-		response (str) - Data generated for the client.
+		(str) - Data generated for the client.
 	"""
 	try:
 		request = json.loads(request)
@@ -89,7 +89,7 @@ def create_contact(contact_json):
 			}
 
 	Returns: 
-		response (str) - Whether the creation was successful or not.
+		(str) - Whether the creation was successful or not.
 			- Successful {"code": 1} 
 			- Unsuccessful {"code": 0} 
 	"""
@@ -105,7 +105,7 @@ def find_all_contacts():
 	"""Retrieves the data of all contacts.
 
 	Returns: 
-		response (str) - The data of all contacts or the failed response.
+		(str) - The data of all contacts or the failed response.
 			- Successful 
 				{
 				  "code": "1",
@@ -157,7 +157,7 @@ def find_contact(json_request):
 		json_request (str) - JSON with the contact data: {"name": "Emilia", "telephone": "5412980051"}
 
 	Returns: 
-		response (str) - The data of all contacts that meet the search parameters or the failed response.
+		(str) - The data of all contacts that meet the search parameters or the failed response.
 			- Successful 
 				{
 				  "code": "1",
@@ -212,7 +212,7 @@ def delete_contact(json_request):
 		contact_json (str) - JSON with the contact parameters: {"name": "Emilia", "telephone": "5412980051"}
 
 	Returns: 
-		response (str) - Whether the creation was successful or not.
+		(str) - Whether the creation was successful or not.
 			- Successful {"code": 1} 
 			- Unsuccessful {"code": 0} 
 	"""	
