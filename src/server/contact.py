@@ -126,4 +126,4 @@ class Contact:
 	@staticmethod
 	def load_from_json(json_data):
 		"""Transform a json object in a Contact object."""
-		return Contact.load_from_map(json.loads(json_data))		
+		return Contact.load_from_map(json.loads(json_data))
