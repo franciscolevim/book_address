@@ -65,30 +65,27 @@ def create_contact(contact_json):
 	
 	Args:
 		contact_json (str) - JSON with the new contact data.
-			{
-			  "code": "2",
-			  "contact": {
-			    "id": 0,
-			    "name": "Dorotea",
-			    "last_name": "Martinez",
-			    "birth_date": "22-08-1930",
-			    "telephones": [
-			      {
-			        "id": 0,
-			        "telephone_number": "5512546702",
-			        "description": "Casa"
-			      }
-			    ],
-			    "addresses": [
-			      {
-			        "id": 0,
-			        "street": "New York",
-			        "floor": "303A",
-			        "city": "Ciudad de México",
-			        "zip_code": "08900"
-			      }
-			    ]
-			  }
+			"contact": {
+				"id": 0,
+				"name": "Dorotea",
+				"last_name": "Martinez",
+				"birth_date": "22-08-1930",
+				"telephones": [
+				  {
+				    "id": 0,
+				    "telephone_number": "5512546702",
+				    "description": "Casa"
+				  }
+				],
+				"addresses": [
+				  {
+				    "id": 0,
+				    "street": "New York",
+				    "floor": "303A",
+				    "city": "Ciudad de México",
+				    "zip_code": "08900"
+				  }
+				]
 			}
 
 	Returns: 
@@ -157,8 +154,7 @@ def find_contact(json_request):
 	"""Retrieves the data of the contacts that meet the search parameters.
 	
 	Args:
-		json_request (str) - JSON with the contact data.
-			{"command": 1, "parameters": {"name": "Emilia", "telephone": "5412980051"}} 
+		json_request (str) - JSON with the contact data: {"name": "Emilia", "telephone": "5412980051"}
 
 	Returns: 
 		response (str) - The data of all contacts that meet the search parameters or the failed response.
@@ -213,8 +209,7 @@ def delete_contact(json_request):
 	"""Delete the the contacts that meet the parameters.
 	
 	Args:
-		contact_json (str) - JSON with the contact parameters.
-			{"command": 1, "parameters": {"name": "Emilia", "telephone": "5412980051"}} 
+		contact_json (str) - JSON with the contact parameters: {"name": "Emilia", "telephone": "5412980051"}
 
 	Returns: 
 		response (str) - Whether the creation was successful or not.
